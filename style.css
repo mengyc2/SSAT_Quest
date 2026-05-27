@@ -1,0 +1,88 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Courier New', Courier, monospace; }
+body, html { width: 100%; height: 100%; overflow: hidden; background-color: #0b0f19; color: #fff; }
+
+.screen { width: 100%; height: 100%; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.hidden { display: none !important; }
+
+/* MENUS & BOXES */
+.menu-box { background: rgba(15, 23, 42, 0.95); padding: 45px; border-radius: 12px; text-align: center; border: 3px dashed #3b82f6; }
+input[type="text"] { width: 85%; padding: 14px; border-radius: 4px; margin-bottom: 25px; text-align: center; font-size: 1.1rem; background: #fff; color: #000; border: none; }
+button { padding: 12px 28px; background: #ea580c; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; color: white; text-transform: uppercase; }
+button:hover { background: #c2410c; }
+
+/* NAV HUD */
+.top-nav { width: 95%; display: flex; justify-content: space-between; align-items: center; margin-top: 12px; background: #111827; padding: 12px 25px; border-radius: 8px; border: 1px solid #374151; z-index: 10; }
+.level-badge { background: #3b82f6; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
+.xp-bar-container { width: 180px; height: 10px; background: #374151; border-radius: 5px; margin: 5px 0; overflow: hidden; }
+#xp-bar-fill { width: 0%; height: 100%; background: #3b82f6; transition: width 0.4s; }
+.environment-banner { background: #1f2937; padding: 6px 12px; border-radius: 4px; font-weight: bold; border: 1px solid #4b5563; }
+
+/* GAME OVERWORLD CANVAS */
+#exploration-zone { width: 850px; margin-top: 10px; text-align: center; }
+canvas { background: #1f2937; border: 4px solid #4b5563; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+.instructions-overlay { margin-top: 6px; font-size: 0.9rem; color: #9ca3af; }
+
+/* BATTLE ARENA LAYOUTS */
+#battle-arena { width: 850px; display: flex; flex-direction: column; align-items: center; margin-top: 5px; }
+#herd-progress-banner { width: 100%; background: #b45309; text-align: center; padding: 8px; font-weight: bold; font-size: 1rem; border-radius: 6px 6px 0 0; color: #fef3c7; border: 2px solid #ea580c; border-bottom: none; }
+#arena-stage { display: flex; width: 100%; justify-content: space-between; align-items: center; background: #111827; padding: 30px; border-radius: 6px 6px 0 0; border: 3px solid #ea580c; min-height: 220px; position: relative; }
+#versus-tag { font-size: 2.5rem; font-weight: bold; color: #dc2626; margin: 0 20px; text-shadow: 0 0 8px rgba(220,38,38,0.4); }
+
+/* SEPARATED MONSTER BOXES */
+#single-enemy-container { display: flex; flex-direction: column; align-items: center; }
+#herd-monsters-wrapper { display: flex; gap: 20px; align-items: center; justify-content: center; }
+.herd-member-card { display: flex; flex-direction: column; align-items: center; transition: all 0.4s ease; background: rgba(0,0,0,0.4); padding: 10px; border-radius: 6px; border: 1px solid #4b5563; }
+.herd-member-card.dead { opacity: 0.15; transform: scale(0.8) translateY(15px); border-color: #ef4444; }
+
+/* HP BARS & VISUAL SPRITES */
+.creep-hp-container { width: 75px; height: 6px; background: #451a03; border-radius: 3px; margin-bottom: 8px; overflow: hidden; border: 1px solid #000; }
+.creep-hp-bar-fill { width: 100%; height: 100%; background: #22c55e; transition: width 0.3s ease; }
+.enemy-hud { background: rgba(0,0,0,0.6); padding: 6px 12px; border-radius: 4px; font-size: 0.85rem; text-align: center; margin-bottom: 12px; border: 1px solid #374151; }
+.timer-container { width: 120px; height: 6px; background: #451a03; margin: 6px auto 0; border-radius: 3px; overflow: hidden; }
+#timer-bar-fill { width: 100%; height: 100%; background: #ef4444; }
+.battle-sprite { font-size: 4rem; text-align: center; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
+
+/* QUESTION PANEL INTERFACE */
+#interaction-box { width: 100%; background: #111827; padding: 25px; border-radius: 0 0 10px 10px; border: 3px solid #4b5563; border-top: none; }
+#battle-layout-container { display: flex; gap: 20px; width: 100%; margin-bottom: 15px; }
+#reading-passage-view { flex: 1.2; max-height: 200px; overflow-y: auto; background: #1e293b; border: 1px dashed #4b5563; padding: 15px; border-radius: 6px; font-size: 0.95rem; line-height: 1.6; text-align: left; color: #e2e8f0; }
+#question-box { flex: 1; font-size: 1.1rem; background: #030712; padding: 15px; border-radius: 6px; border: 1px solid #374151; line-height: 1.5; text-align: left; }
+#options-box { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.option-btn { background: #1f2937; color: white; border: 1px solid #4b5563; padding: 14px; border-radius: 4px; text-align: left; cursor: pointer; font-size: 1rem; }
+.option-btn:hover { background: #374151; border-color: #9ca3af; }
+
+/* FRACTION RENDER ENGINE */
+.fraction-container { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 6px; font-weight: bold; }
+.fraction-numerator { border-bottom: 2px solid white; padding-bottom: 1px; }
+.fraction-denominator { padding-top: 1px; }
+
+/* FEEDBACK BOX */
+#explanation-box { background: #030712; padding: 20px; border-radius: 6px; border-left: 6px solid #2563eb; text-align: left; margin-top: 10px; }
+#explanation-text { margin: 12px 0; color: #d1d5db; font-size: 1rem; line-height: 1.5; }
+
+/* TELEPORTATION MODAL OVERLAY */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(3, 7, 18, 0.9); display: flex; align-items: center; justify-content: center; z-index: 100; }
+.modal-content { background: #111827; padding: 35px; border-radius: 12px; text-align: center; max-width: 550px; width: 90%; border: 2px solid #eab308; }
+.zone-grid { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+.zone-travel-btn { padding: 14px; font-weight: bold; font-size: 1.05rem; color: white; background: #1f2937; border: 1px solid #374151; border-radius: 6px; text-align: left; cursor: pointer; }
+.zone-travel-btn:hover { background: #2563eb; }
+#close-travel-btn { background: #dc2626; padding: 6px 16px; margin-top: 10px; }
+
+/* STICK AVATAR SHAPES */
+.stick-figure { position: relative; width: 60px; height: 100px; transition: transform 0.2s; }
+.stick-head { width: 24px; height: 24px; border: 3px solid white; border-radius: 50%; position: absolute; left: 18px; background: #0b0f19; }
+.stick-torso { width: 3px; height: 40px; background: white; position: absolute; top: 24px; left: 29px; }
+.stick-arm { width: 22px; height: 3px; background: white; position: absolute; top: 32px; }
+.arm-left { left: 8px; transform: rotate(-15deg); }
+.arm-right { left: 29px; transform: rotate(15deg); }
+.stick-leg { width: 3px; height: 35px; background: white; position: absolute; top: 63px; }
+.leg-left { left: 22px; transform: rotate(12deg); }
+.leg-right { left: 36px; transform: rotate(-12deg); }
+
+/* ANIMATION KEY EFFECTS */
+.attack-dash { animation: dashM 0.45s ease-in-out; }
+.damage-shake { animation: shakeM 0.4s ease-in-out; }
+.escape-slide { animation: slideM 1.2s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards; }
+@keyframes dashM { 0% { transform: translateX(0); } 50% { transform: translateX(100px) scale(1.1); } 100% { transform: translateX(0); } }
+@keyframes shakeM { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-12px); } 75% { transform: translateX(12px); } }
+@keyframes slideM { 100% { transform: translateX(500px); opacity: 0; } }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSAT Quest: Open World Engine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="login-screen" class="screen">
+        <div class="menu-box">
+            <h1>⚔️ SSAT QUEST ⚔️</h1>
+            <p>Adaptive Spaced-Repetition Engine. Master concepts. Train your brain.</p>
+            <input type="text" id="username-input" placeholder="Enter your Hero Name..." maxlength="12">
+            <button id="start-btn">Adventure Awaits</button>
+        </div>
+    </div>
+
+    <div id="intro-screen" class="screen hidden">
+        <div id="map-container">
+            <div class="map-zone zone-grasslands active-zone">Grasslands (Lv.1-20)</div>
+            <div class="map-zone zone-marshes">Marshes (Lv.21-40)</div>
+            <div class="map-zone zone-mountains">Mountains (Lv.41-60)</div>
+            <div class="map-zone zone-volcano">Volcano (Lv.61-80)</div>
+            <div class="map-zone zone-deepsea">Deep Sea (Lv.81-100)</div>
+        </div>
+        <div id="intro-text">Your journey begins...</div>
+    </div>
+
+    <div id="game-screen" class="screen hidden">
+        
+        <div class="top-nav">
+            <button id="world-map-btn">🗺️ Travel Realms</button>
+            <div class="environment-banner" id="current-zone-banner">📍 Loading Realm...</div>
+            
+            <div class="player-hud">
+                <span id="display-name">Hero</span> <span id="display-level" class="level-badge">Lv. 1</span>
+                <div class="xp-bar-container"><div id="xp-bar-fill"></div></div>
+                <span id="display-xp-text">0 / 100 XP</span>
+            </div>
+        </div>
+
+        <div id="exploration-zone">
+            <canvas id="gameCanvas" width="850" height="420"></canvas>
+            <div class="instructions-overlay">⌨️ Use Arrow Keys to explore. Intercept Pods [🐋] to trigger 5-Min Reading Swarms!</div>
+        </div>
+
+        <div id="battle-arena" class="hidden">
+            <div id="herd-progress-banner" class="hidden">🌾 SWARM HERD ACTIVE: Step <span id="current-herd-step">1</span> of 3</div>
+
+            <div id="arena-stage"></div>
+
+            <div id="interaction-box">
+                <div id="battle-layout-container">
+                    <div id="reading-passage-view" class="hidden"></div>
+                    <div id="question-box">Loading...</div>
+                </div>
+                <div id="options-box"></div>
+                
+                <div id="explanation-box" class="hidden">
+                    <h4 id="result-status">Combat Progress</h4>
+                    <p id="explanation-text"></p>
+                    <button id="next-battle-btn" class="action-btn">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="travel-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Select Destination Realm</h2>
+            <p>Travel to any unlocked region instantly. LocalStorage memory autosaves automatically.</p>
+            <div class="zone-grid">
+                <button class="zone-travel-btn" data-zone="grasslands">🟢 Grasslands (Lv. 1-20)</button>
+                <button class="zone-travel-btn" data-zone="marshes">🟤 Sunken Marshes (Lv. 21-40)</button>
+                <button class="zone-travel-btn" data-zone="mountains">🪨 Alpine Peaks (Lv. 41-60)</button>
+                <button class="zone-travel-btn" data-zone="volcano">🌋 Magma Caldera Core (Lv. 61-80)</button>
+                <button class="zone-travel-btn" data-zone="deepsea">🔵 Abyssal Mariana Trench (Lv. 81-100)</button>
+            </div>
+            <button id="close-travel-btn">❌ Close Map</button>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
